@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# This script displays the content of the current directory in list format, only the part of the name after the first dash is displayed
+# Displays the contents of the current directory in list format.
+# Only displays the part of the name after the first dash.
 
-list=$(ls)  # used command substition because ls is a command
-
-for VAR in $list    # loop through all filenames in current directory
-do
-    echo "$VAR" | cut -d "-" -f 2-  # cut the file when - is reached and returns the field 2 downwards
+list=$(ls)
+for i in $list; do
+	echo "$i" | cut -d '-' -f2
 done
