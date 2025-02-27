@@ -3,13 +3,13 @@
 # processes whose name contain the word bash
 
 for pid in /proc/[0-9]*; do
-	pid=$(basename "$pid")
-
-	if [[ -f "/proc/$pid/comm" ]]; then
-		process_name=$(cat "/proc/$pid/comm")
-
-		if [[ "$process_name" == *"bash"* ]]; then
-			echo "PID: $pid, Process Name: $process_name"
-		fi
-	fi
+  if [[ -d "$pid" ]]; then
+    comm_file="$pid/comm"
+    if [[ -f "$comm_file" ]]; then
+      process_name=$(cat "$comm_file")
+      if [[ "$process_name" == *"bash"* ]]; then
+        echo "PID: $(basename "$pid") - Process: $process_name"
+      fi
+    fi
+  fi
 done
