@@ -8,7 +8,7 @@ for pid in /proc/[0-9]*; do
     if [[ -f "$comm_file" ]]; then
       process_name=$(cat "$comm_file")
       if [[ "$process_name" == *"bash"* ]]; then
-        echo "PID: $(basename "$pid") - Process: $process_name"
+        echo "$(basename "$pid") $process_name"
       fi
     fi
   fi
