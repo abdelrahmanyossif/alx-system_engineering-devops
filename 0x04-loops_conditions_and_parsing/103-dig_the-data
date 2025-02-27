@@ -4,6 +4,4 @@
 #   Displays the number of occurrences, IP, and HTTP status
 #+  code of each log, in sorted order.
 
-LOG_FILE="access.log"
-
-awk '{ ip[$1 " " $9]++ } END { for (key in ip) print ip[key], key }' "$LOG_FILE" | sort -nr
+awk '{count[$1, $9]++} END {for (key in count) {split(key, arr, SUBSEP); print count[key], arr[1], arr[2]}}' access.log | sort -nr
