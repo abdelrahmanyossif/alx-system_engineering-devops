@@ -2,11 +2,11 @@
 # stopped our 4-to_infinity_and_beyond process
 # using ctrl+c in the previous task
 
-pid=$(pgrep -f "4-to_infinity_and_beyond")
+pid=$(pgrep -f "To infinity and beyond")
 
 if [[ -n "$pid" ]]; then
-	kill "$pid"
-	echo "Process 4-to_infinity_and_beyond (PID: $pid) has been terminated."
+  kill "$pid"
+  echo "Process with PID $pid killed."
 else
-	echo "No 4-to_infinity_and_beyond process found."
+  echo "Process not found."
 fi
