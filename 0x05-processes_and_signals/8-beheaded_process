@@ -5,8 +5,9 @@ pid=$(pgrep -f "7-highlander")
 
 # Check if the process was found
 if [[ -n "$pid" ]]; then
-    echo "Stopping process 7-highlander with PID: $pid"
-    kill "$pid"
+  # Send SIGTERM signal to the process
+  kill -SIGTERM "$pid"
+  echo "Sent SIGTERM to 7-highlander (PID: $pid)."
 else
-    echo "Process 7-highlander not found."
+  echo "No 7-highlander process found."
 fi
