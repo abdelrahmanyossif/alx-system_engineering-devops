@@ -5,9 +5,4 @@
 # Display in a user-oriented format
 # Show process hierarchy
 
-echo "Currently Running Processes (All Users)"
-echo "-------------------------------------"
-
-tree_output=$(ps -e --forest -o pid,user,tty,%cpu,%mem,cmd)
-
-echo "$tree_output"
+ps auxf
