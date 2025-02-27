@@ -2,4 +2,14 @@
 # displays the PID, along with the process name, of
 # processes whose name contain the word bash
 
-pgrep bash -l
+for pid in /proc/[0-9]*; do
+	pid=$(basename "$pid")
+
+	if [[ -f "/proc/$pid/comm" ]]; then
+		process_name=$(cat "/proc/$pid/comm")
+
+		if [[ "$process_name" == *"bash"* ]]; then
+			echo "PID: $pid, Process Name: $process_name"
+		fi
+	fi
+done
