@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-using Puppet to make changes to our configuration file
-
+# Client configuration file (w/ Puppet)
 file {'/etc/ssh/shh_config':
 	ensure  => 'present',
 }
